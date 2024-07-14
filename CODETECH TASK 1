@@ -1,0 +1,63 @@
+CODETECH TASK 1 --VERILOG CODES---
+
+//LOGIC GATES
+module LOGIC_GATES(
+    input a,
+    input b,
+    output and1,
+    output or1,
+    output not1,
+    output xor1,
+    output xnor1
+    );
+    //dataflow or data modelling
+    assign and1=a&b;
+    assign or1=a|b;
+    assign not1=~a;
+    assign xor1=a^b;
+    assign xnor1=a~^b;
+endmodule
+
+//MULTIPLEXER(4*1)
+module MUX_4_1(
+    input [2:0]d0,
+    input [2:0]d1,
+    input [2:0]d2,
+    input [2:0]d3,
+    input [1:0] s,
+    output [1:0]y
+    );
+    reg [2:0]y;
+    always@(s)
+    begin
+    case(s)
+    2'b00 : y=d0;
+    2'b01 : y=d1;
+    2'b10 : y=d2;
+    2'b11 : y=d3;
+    endcase    
+    end
+endmodule
+
+//HALF ADDER
+module HALF_ADDER(
+    input a,
+    input b,
+    output sum,
+    output carry
+    );
+    assign sum=a^b;
+    assign carry=a & b;
+endmodule
+
+//FULL ADDER
+module FULL_ADDER(
+    input a,
+    input b,
+    input cin,
+    output sum,
+    output cout
+    );
+    assign sum=a^b^cin;
+    assign cout=(a&b)|(cin&(a^b));
+endmodule
